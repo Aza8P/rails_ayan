@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
-import "popper.js"
+import Popper from "@popperjs/core"
 import "jquery"
 
 console.log("Hello from application.js")
