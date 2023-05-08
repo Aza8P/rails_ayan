@@ -45,6 +45,10 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+gem "simple_form"
+
+gem "autoprefixer-rails"
+
 gem 'font-awesome-sass', '~> 6.1.2'
 
 group :development, :test do
