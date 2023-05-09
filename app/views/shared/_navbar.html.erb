@@ -9,13 +9,13 @@
 
         <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= 'active' if current_page?(about_path) %>">
               <a class="nav-link" href="/about">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= 'active' if current_page?(about_path) %>">
               <a class="nav-link" href="/contact">Contact Us</a>
             </li>
           </ul>
