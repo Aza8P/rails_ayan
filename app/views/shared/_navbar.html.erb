@@ -22,13 +22,11 @@
         </div>
       </div>
         <!-- Language switcher -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-globe"></i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%= link_to image_tag('en.png', width: "20px"), url_for(locale: "en") %>
-          <%= link_to image_tag('mn.png', width: "20px"), url_for(locale: "mn") %>
-        </div>
+      <div class="language-switcher">
+        <% if I18n.locale == :en %>
+          <%= link_to image_tag('mn.png', width: "25px"), url_for(locale: "mn"), class: "language-link", data: { locale: "mn" } %>
+        <% else %>
+          <%= link_to image_tag('en.png', width: "25px"), url_for(locale: "en"), class: "language-link", data: { locale: "en" } %>
+        <% end %>
       </div>
     </nav>
