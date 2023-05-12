@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     I18n.locale = locale if I18n.available_locales.include?(locale)
     head :ok
   end
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+  helper_method :current_user
 end
