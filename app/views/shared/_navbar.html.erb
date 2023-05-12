@@ -10,13 +10,19 @@
         <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item <%= 'active' if current_page?(root_path) %>">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
+              <a class="nav-link" aria-current="page" href="/">
+              <%= t('home')%>
+              </a>
             </li>
             <li class="nav-item <%= 'active' if current_page?(about_path) %>">
-              <a class="nav-link" href="/about">About Us</a>
+              <a class="nav-link" href="/about">
+              <%= t('about') %>
+              </a>
             </li>
             <li class="nav-item <%= 'active' if current_page?(about_path) %>">
-              <a class="nav-link" href="/contact">Contact Us</a>
+              <a class="nav-link" href="/contact">
+              <%= t('contact') %>
+              </a>
             </li>
           </ul>
         </div>
