@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get 'about', to: "pages#about", as: 'about'
   get 'contact', to: "pages#contact", as: 'contact'
   get 'agenda', to: "pages#agenda", as: 'agenda'
-  resources :travel_preferences, only: [:create]
+  resources :travel_preferences, only: [:create, :edit, :update, :new]
 end

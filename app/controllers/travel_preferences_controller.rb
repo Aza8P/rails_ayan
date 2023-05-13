@@ -12,11 +12,30 @@ class TravelPreferencesController < ApplicationController
     end
 
     def create
-        @travel_preference = current_user.travel_preferences.build(travel_preference_params)
+        @travel_preference = TravelPreference.new(travel_preference_params)
         if @travel_preference.save
-            redirect_to @travel_preference
+            redirect_to root_path, notice: 'Travel preferences saved.'
         else
-            render error
+            render :new
+        end
+        # @travel_preference = current_user.travel_preferences.build(travel_preference_params)
+        # if @travel_preference.save
+        #     redirect_to root_path, notice: 'Travel preferences saved.'
+        # else
+        #     render :new
+        # end
+    end
+
+    def edit
+        @travel_preference = TravelPreference.find(params[:id])
+    end
+
+    def update
+        @travel_preference = TravelPreference.find(params[:id])
+        if @travel_preference.update(travel_preference_params)
+            redirect_to root_path, notice: 'Travel preferences updated.'
+        else
+            render :edit
         end
     end
 
