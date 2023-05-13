@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get 'contact', to: "pages#contact", as: 'contact'
   get 'agenda', to: "pages#agenda", as: 'agenda'
   resources :travel_preferences, only: [:create, :edit, :update, :new]
+
+  devise_for :users
 end
