@@ -5,3 +5,5 @@ export default class extends Controller {
     this.element.textContent = "Hello World!"
   }
 }
+
+console.log("Hello from hello_controller.js")

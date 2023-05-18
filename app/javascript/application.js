@@ -3,7 +3,6 @@ import "controllers"
 import "@hotwired/turbo-rails"
 import $ from 'jquery'
 import "bootstrap"
-
 console.log("Hello from application.js");
 console.log("JAVASCRIPT PACKS LOADED");
 
