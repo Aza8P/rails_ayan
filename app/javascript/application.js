@@ -1,6 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "controllers"
+import "@hotwired/stimulus"
+import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
+import "controllers"
 import $ from 'jquery'
 import "bootstrap"
 console.log("Hello from application.js");

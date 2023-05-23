@@ -1,20 +1,29 @@
-<form action="<%= travel_preferences_path %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <div class="mb-3">
-    <label for="destination" class="form-label">Destination</label>
-    <input type="text" class="form-control" id="destination" name="travel_preference[destination]" value="<%= @travel_preference.destination %>">
+<div class="container">
+  <div class="form-box" style="margin: 200px">
+  <form action="<%= travel_preferences_path %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="mb-3">
+      <label for="destination" class="form-label">Destination</label>
+      <input type="text" class="form-control" id="destination" name="travel_preference[destination]" 
+        <% if params[:city].present? %>
+          value="<%= params[:city] %>"
+        <% else %>
+          value="<%= @travel_preference.destination %>"
+        <% end %>>    
+    </div>
+    <div class="mb-3">
+      <label for="start_date" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="start_date" name="travel_preference[start_date]" value="<%= @travel_preference.start_date %>">
+    </div>
+    <div class="mb-3">
+      <label for="end_date" class="form-label">End Date</label>
+      <input type="date" class="form-control" id="end_date" name="travel_preference[end_date]" value="<%= @travel_preference.end_date %>">
+    </div>
+    <div class="mb-3">
+      <label for="budget" class="form-label">Budget</label>
+      <input type="number" class="form-control" id="budget" name="travel_preference[budget]" value="<%= @travel_preference.budget %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
   </div>
-  <div class="mb-3">
-    <label for="start_date" class="form-label">Start Date</label>
-    <input type="date" class="form-control" id="start_date" name="travel_preference[start_date]" value="<%= @travel_preference.start_date %>">
-  </div>
-  <div class="mb-3">
-    <label for="end_date" class="form-label">End Date</label>
-    <input type="date" class="form-control" id="end_date" name="travel_preference[end_date]" value="<%= @travel_preference.end_date %>">
-  </div>
-  <div class="mb-3">
-    <label for="budget" class="form-label">Budget</label>
-    <input type="number" class="form-control" id="budget" name="travel_preference[budget]" value="<%= @travel_preference.budget %>">
-  </div>
-  <button type="submit" class="btn btn-primary">Update</button>
-</form>
+</div>
