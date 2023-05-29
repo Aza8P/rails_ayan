@@ -1,4 +1,5 @@
 <div class="container">
+  
   <div class="form-box" style="margin: 200px">
   <form action="<%= travel_preferences_path %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -20,10 +21,11 @@
       <input type="date" class="form-control" id="end_date" name="travel_preference[end_date]" value="<%= @travel_preference.end_date %>">
     </div>
     <div class="mb-3">
-      <label for="budget" class="form-label">Budget</label>
+      <label for="budget" class="form-label"> Budget(optional)</label>
       <input type="number" class="form-control" id="budget" name="travel_preference[budget]" value="<%= @travel_preference.budget %>">
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
   </div>
 </div>
+

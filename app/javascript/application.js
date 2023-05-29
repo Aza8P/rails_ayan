@@ -2,13 +2,16 @@
 import "@hotwired/stimulus"
 import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
-import "controllers"
 import $ from 'jquery'
-import "bootstrap"
+import Vue from 'vue'
+import 'bootstrap'
+
+
 console.log("Hello from application.js");
 console.log("JAVASCRIPT PACKS LOADED");
 
 document.addEventListener("turbo:load", () => {
+  console.log("turbo:load");
   const activeLanguageLink = document.querySelector(".language-link.selected");
   console.log("event click", activeLanguageLink);
   const languageLinks = document.querySelectorAll(".language-link");
