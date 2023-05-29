@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  devise_for :users
   
-  root to: "pages#home"
-  get 'about', to: "pages#about", as: 'about'
-  get 'contact', to: "pages#contact", as: 'contact'
-  get 'agenda', to: "pages#agenda", as: 'agenda'
-  resources :travel_preferences, only: [:create, :edit, :update, :new]
-
+  scope "(:locale)", locale: /en|mn/ do
+    devise_for :users
+    root to: "pages#home"
+    get 'about', to: "pages#about", as: 'about'
+    get 'contact', to: "pages#contact", as: 'contact'
+    get 'agenda', to: "pages#agenda", as: 'agenda'
+    resources :travel_preferences, only: [:create, :edit, :update, :new]
+  end
 end

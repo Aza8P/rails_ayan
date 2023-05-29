@@ -1,11 +1,17 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "controllers"
 import "@hotwired/stimulus"
 import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
-import $ from 'jquery'
-import Vue from 'vue'
+
+import 'jquery'
 import 'bootstrap'
 
+const navElement = document.getElementById("nav");
+navElement.addEventListener(click, listener) {
+  console.log("navElement", navElement);
+}
+console.log("navElement", navElement);
 
 console.log("Hello from application.js");
 console.log("JAVASCRIPT PACKS LOADED");
