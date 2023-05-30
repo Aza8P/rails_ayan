@@ -26,7 +26,7 @@
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to t('logout'), destroy_user_session, method: :delete, class: "nav-link" %>
+            <%= link_to t('logout'), destroy_user_session_path, data: {turbo_method: :delete} , class: "nav-link" %>
           <% else %>
             <%= link_to t('login'), new_user_session_path, class: "nav-link" %>
           <% end %>
@@ -34,12 +34,12 @@
       </ul>
     </div>
       <!-- Language switcher -->
-   <div class="language-switcher">
-    <% if I18n.locale == :en %>
-      <%= link_to image_tag('mn.png', width: "25px"), url_for(locale: "mn"), class: "language-link", data: { locale: "mn" } %>
-    <% else %>
-      <%= link_to image_tag('en.png', width: "25px"), url_for(locale: "en"), class: "language-link", data: { locale: "en" } %>
-    <% end %>
+    <div class="language-switcher">
+      <% if I18n.locale == :en %>
+        <%= link_to image_tag('mn.png', width: "25px"), url_for(locale: "mn"), class: "language-link", data: { locale: "mn" } %>
+      <% else %>
+        <%= link_to image_tag('en.png', width: "25px"), url_for(locale: "en"), class: "language-link", data: { locale: "en" } %>
+      <% end %>
     </div>
   </div>
 </nav>
