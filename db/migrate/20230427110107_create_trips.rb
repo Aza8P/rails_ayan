@@ -6,7 +6,7 @@ class CreateTrips < ActiveRecord::Migration[7.0]
       t.string :destination
       t.decimal :budget
       t.integer :user_id
-      
+
       t.timestamps
     end
   end

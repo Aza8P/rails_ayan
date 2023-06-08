@@ -3,7 +3,6 @@ import "controllers"
 import "@hotwired/stimulus"
 import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
-
 import 'jquery'
 import 'bootstrap'
 

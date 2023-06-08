@@ -1,2 +1,53 @@
 
 <%= render 'shared/preference_form' %>
+
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Listen for form submission
+    $('#travel-preference-form').on('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Serialize the form data
+      var formData = $(this).serialize();
+
+      // Send an AJAX request to the backend
+      $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: formData,
+        dataType: 'json', // Set the expected response data type as JSON
+        success: function(response) {
+          // Update the results section with the received data
+          updateResults(response.data);
+        },
+        error: function(xhr, status, error) {
+          // Handle error
+          console.error(error);
+        }
+      });
+    });
+
+    // Function to update the results section
+    function updateResults(data) {
+      var resultsSection = $('#results-section');
+
+      // Clear previous results
+      resultsSection.empty();
+
+      if (data.length > 0) {
+        // Iterate over the data and append it to the results section
+        data.forEach(function(item) {
+          var resultItem = $('<p>').text('Item: ' + JSON.stringify(item));
+          resultsSection.append(resultItem);
+        });
+      } else {
+        // Display a message if no results available
+        var noResultsMessage = $('<p>').text('No results available.');
+        resultsSection.append(noResultsMessage);
+      }
+    }
+  });
+</script>

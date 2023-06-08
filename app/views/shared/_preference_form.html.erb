@@ -1,31 +1,37 @@
 <div class="container">
-  
-  <div class="form-box" style="margin: 200px">
-  <form action="<%= travel_preferences_path %>" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <div class="mb-3">
-      <label for="destination" class="form-label">Destination</label>
-      <input type="text" class="form-control" id="destination" name="travel_preference[destination]" 
+  <div class="form-box" style="margin: 0 50px">
+    <form class="row g-3" action="<%= travel_preferences_path %>" method="post">
+      <div class="col-md-6">
+        <label for="destination" class="form-label">Destination</label>
+        <select class="form-select form-control" id="destination" name="travel_preference[destination]">
         <% if params[:city].present? %>
-          value="<%= params[:city] %>"
+          <option selected value="<%= params[:city] %>"><%= params[:city] %></option>
         <% else %>
-          value="<%= @travel_preference.destination %>"
-        <% end %>>    
-    </div>
-    <div class="mb-3">
-      <label for="start_date" class="form-label">Start Date</label>
-      <input type="date" class="form-control" id="start_date" name="travel_preference[start_date]" value="<%= @travel_preference.start_date %>">
-    </div>
-    <div class="mb-3">
-      <label for="end_date" class="form-label">End Date</label>
-      <input type="date" class="form-control" id="end_date" name="travel_preference[end_date]" value="<%= @travel_preference.end_date %>">
-    </div>
-    <div class="mb-3">
-      <label for="budget" class="form-label"> Budget(optional)</label>
-      <input type="number" class="form-control" id="budget" name="travel_preference[budget]" value="<%= @travel_preference.budget %>">
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-  </form>
+        <option value="<%= @travel_preference.destination %>"><%= @travel_preference.destination %></option>
+        <% end %>
+          <option value="Guangzhou">Guangzhou</option>
+          <option value="Beijing">Beijing</option>
+          <option value="Shanghai">Shanghai</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="number-of-people" class="form-label">How many people?</label>
+        <input type="number" class="form-control" id="number-of-people">
+      </div>
+      <div class="col-md-4">
+        <label for="start_date" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="start_date" name="travel_preference[start_date]" value="<%= @travel_preference.start_date %>">
+      </div>
+      <div class="col-md-4">
+        <label for="end_date" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="end_date" name="travel_preference[end_date]" value="<%= @travel_preference.end_date %>">
+      </div>
+      <div class="col-md-4">
+        <label for="budget" class="form-label">Budget(optional)</label>
+        <input type="number" class="form-control" id="budget" name="travel_preference[budget]" value="<%= @travel_preference.budget %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
   </div>
 </div>
 
