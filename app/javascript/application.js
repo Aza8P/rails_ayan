@@ -1,19 +1,12 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "controllers"
 import "@hotwired/stimulus"
 import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
-import 'jquery'
-import 'bootstrap'
-
-const navElement = document.getElementById("nav");
-navElement.addEventListener(click, listener) {
-  console.log("navElement", navElement);
-}
-console.log("navElement", navElement);
+import "jquery"
+import "bootstrap"
+import "./ controllers/options-controller.js";
 
 console.log("Hello from application.js");
-console.log("JAVASCRIPT PACKS LOADED");
 
 document.addEventListener("turbo:load", () => {
   console.log("turbo:load");
@@ -40,3 +33,5 @@ document.addEventListener("turbo:load", () => {
     });
   });
 });
+
+

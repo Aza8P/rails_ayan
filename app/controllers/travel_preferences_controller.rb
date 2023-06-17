@@ -8,25 +8,35 @@ class TravelPreferencesController < ApplicationController
 
     def create
         @travel_preference = TravelPreference.new(travel_preference_params)
-        # @travel_preference.user_id = current_user.id
-
-        if @travel_preference.save
-            # make the API request to Trip.com
-            response = trip_api_request(@travel_preference)
-            if response.code == 200
-            # process the API response and extract the relevant data
-            @data = process_api_response(response)
-
-            # render the agenda page with the fetched data
-            render json: { data: @data}
-            else
-             # Handle API request error
-             # Display an error message or perform appropriate error handling
-            end
+        
+        if @travel_preference.save 
+            # display success message & we would respond to your inquiry asap
+            # TODO: #once we are able to send API, we would showcase the agenda page with the fetched data
+            render json: { success: 'Thank you for your request! our team will respond to your inquiry asap.'}
         else
-            # Handle saving the travel preference error
-            # Display an error message or perform appropriate error handling 
+            render json: { error: "Something went wrong. Please try again." } 
         end
+
+
+        # TODO: 
+        #after obtaining the api key from Trip.com, uncomment the following code & add the api key to the request
+        # if @travel_preference.save
+        #     # make the API request to Trip.com
+        #     response = trip_api_request(@travel_preference)
+        #     if response.code == 200
+        #     # process the API response and extract the relevant data
+        #     @data = process_api_response(response)
+
+        #     # render the agenda page with the fetched data
+        #     render json: { data: @data}
+        #     else
+        #      # Handle API request error
+        #      # Display an error message or perform appropriate error handling
+        #     end
+        # else
+        #     # Handle saving the travel preference error
+        #     # Display an error message or perform appropriate error handling 
+        # end
     end
 
     def edit
