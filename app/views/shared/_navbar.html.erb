@@ -1,45 +1,45 @@
 <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand p-0 me-2" href="#">        
-          <%= image_tag('logo.png', width: 45, height:40) %>
-        </a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="nav">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item <%= 'active' if current_page?(root_path) %>">
-              <a class="nav-link" aria-current="page" href="/">
-              <%= t('home')%>
-              </a>
-            </li>
-            <li class="nav-item <%= 'active' if current_page?(about_path) %>">
-              <a class="nav-link" href="/about">
-              <%= t('about') %>
-              </a>
-            </li>
-            <li class="nav-item <%= 'active' if current_page?(about_path) %>">
-              <a class="nav-link" href="/contact">
-              <%= t('contact') %>
-              </a>
-            </li>
-            <li class="nav-item">
-              <% if user_signed_in? %>
-                <%= link_to t('logout'), destroy_user_session, method: :delete, class: "nav-link" %>
-              <% else %>
-                <%= link_to t('login'), new_user_session_path, class: "nav-link" %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-        <!-- Language switcher -->
-      <div class="language-switcher">
-        <% if I18n.locale == :en %>
-          <%= link_to image_tag('mn.png', width: "25px"), url_for(locale: "mn"), class: "language-link", data: { locale: "mn" } %>
-        <% else %>
-          <%= link_to image_tag('en.png', width: "25px"), url_for(locale: "en"), class: "language-link", data: { locale: "en" } %>
-        <% end %>
-      </div>
-    </nav>
+  <div class="container">
+    <a class="navbar-brand p-0 me-2" href="/">        
+      <%= image_tag('logo.png', width: 45, height:40) %>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Dropdown toggle  -->
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+          <a class="nav-link" aria-current="page" href="/">
+          <%= t('home')%>
+          </a>
+        </li>
+        <li class="nav-item <%= 'active' if current_page?(about_path) %>">
+          <a class="nav-link" href="/about">
+          <%= t('about') %>
+          </a>
+        </li>
+        <li class="nav-item <%= 'active' if current_page?(about_path) %>">
+          <a class="nav-link" href="/contact">
+          <%= t('contact') %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to t('logout'), destroy_user_session_path, data: {turbo_method: :delete} , class: "nav-link" %>
+          <% else %>
+            <%= link_to t('login'), new_user_session_path, class: "nav-link" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+      <!-- Language switcher -->
+    <div class="language-switcher">
+      <% if I18n.locale == :en %>
+        <%= link_to image_tag('mn.png', width: "25px"), url_for(locale: "mn"), class: "language-link", data: { locale: "mn" } %>
+      <% else %>
+        <%= link_to image_tag('en.png', width: "25px"), url_for(locale: "en"), class: "language-link", data: { locale: "en" } %>
+      <% end %>
+    </div>
+  </div>
+</nav>

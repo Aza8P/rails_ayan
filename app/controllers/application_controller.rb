@@ -1,22 +1,17 @@
 class ApplicationController < ActionController::Base
-    before_action :set_locale
+  include Devise::Controllers::Helpers
+  before_action :set_locale
 
-    def set_locale
-        I18n.locale = params[:locale] || I18n.default_locale
+  private
+
+  def set_locale
+    # Check if the locale is present in the params
+    if params[:locale].present? && I18n.available_locales.include?(params[:locale].to_sym)
+      # Store the locale in the session
+      session[:locale] = params[:locale].to_sym
     end
 
-  def default_url_options
-    { locale: I18n.locale }
+    # Set the locale based on the stored value in the session or fallback to the default locale
+    I18n.locale = session[:locale] || I18n.default_locale
   end
-
-  def locale
-    locale = params[:locale].to_sym
-    I18n.locale = locale if I18n.available_locales.include?(locale)
-    head :ok
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-  helper_method :current_user
 end

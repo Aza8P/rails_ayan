@@ -1,11 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "controllers"
+import "@hotwired/stimulus"
+import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
-import $ from 'jquery'
+import "jquery"
+import "popper"
 import "bootstrap"
+import "controllers"
 
 console.log("Hello from application.js");
-console.log("JAVASCRIPT PACKS LOADED");
 
 document.addEventListener("turbo:load", () => {
   const activeLanguageLink = document.querySelector(".language-link.selected");
@@ -31,3 +33,5 @@ document.addEventListener("turbo:load", () => {
     });
   });
 });
+
+
