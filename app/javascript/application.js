@@ -3,13 +3,13 @@ import "@hotwired/stimulus"
 import "@hotwired/stimulus-loading"
 import "@hotwired/turbo-rails"
 import "jquery"
+import "popper"
 import "bootstrap"
-import "./ controllers/options-controller.js";
+import "controllers"
 
 console.log("Hello from application.js");
 
 document.addEventListener("turbo:load", () => {
-  console.log("turbo:load");
   const activeLanguageLink = document.querySelector(".language-link.selected");
   console.log("event click", activeLanguageLink);
   const languageLinks = document.querySelectorAll(".language-link");
