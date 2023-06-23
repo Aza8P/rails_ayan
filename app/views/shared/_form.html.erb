@@ -1,0 +1,4 @@
+<%= f.input :destination, collection: ['Guangzhou', 'Beijing', 'Shanghai'], selected: params[:city], prompt: t('select'), label: t('destination') %>
+<%= f.input :start_date, as: :date, label: t('start_date') %>
+<%= f.input :end_date, as: :date, label: t('end_date') %>
+<%= f.input :budget, as: :integer, label: t('budget') %>
