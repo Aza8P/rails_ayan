@@ -2,23 +2,22 @@ require 'net/http'
 require 'json'
 
 class TravelPreferencesController < ApplicationController
+     before_action :set_travel_preference, only: [:show, :edit, :update, :destroy]
+
     def new
         @travel_preference = TravelPreference.new
     end
 
     def create
         @travel_preference = TravelPreference.new(travel_preference_params)
+        @travel_preference.user = current_user
         
-        if @travel_preference.save 
-            # display success message & we would respond to your inquiry asap
-            # TODO: #once we are able to send API, we would showcase the agenda page with the fetched data
-            render json: { success: 'Thank you for your request! our team will respond to your inquiry asap.'}
+        if @travel_preference.save
+            # send email to the admin with the request 
         else
-            render json: { error: "Something went wrong. Please try again." } 
+            render :agenda
         end
 
-
-        # TODO: 
         #after obtaining the api key from Trip.com, uncomment the following code & add the api key to the request
         # if @travel_preference.save
         #     # make the API request to Trip.com
@@ -39,27 +38,14 @@ class TravelPreferencesController < ApplicationController
         # end
     end
 
-    def edit
-        @travel_preference = TravelPreference.find(params[:id])
-    end
-
-    def update
-        @travel_preference = TravelPreference.find(params[:id])
-        if @travel_preference.update(travel_preference_params)
-            redirect_to root_path, notice: 'Travel preferences updated.'
-        else
-            render :edit
-        end
-    end
-
-    def destroy
-        @travel_preference.destroy
-    end
-
     private
 
     def travel_preference_params
-        params.require(:travel_preference).permit(:destination, :start_date, :end_date, :budget)
+        params.require(:travel_preference).permit(:destination, :start_date, :end_date, :origin, :budget)
+    end
+
+    def set_travel_preference
+        @travel_preference = TravelPreference.find(params[:id])
     end
 
     def trip_api_request(travel_preference)

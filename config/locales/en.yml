@@ -36,9 +36,15 @@ en:
   contact: "Contact Us"
   login: "Login"
   logout: "Logout"
-  destination: "Destination"
+  origin: "From Where"
+  destination: "To Where"
   select: "Select a city"
   number_of_people: "Number of travellers"
   start_date: "Start Date"
   end_date: "End Date"
   budget: "Budget (optional)"
+  search: "Search"
+      
+      
+
+

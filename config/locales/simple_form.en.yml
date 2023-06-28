@@ -19,6 +19,8 @@ en:
           email: 'E-mail to sign in.'
         edit:
           email: 'E-mail.'
+      start_date: 'Start date'
+      end_date: 'End date'
     hints:
       defaults:
         username: 'User name to sign in.'

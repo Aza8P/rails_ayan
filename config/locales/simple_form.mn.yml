@@ -19,13 +19,15 @@ en:
           email: 'Нэвтрэх И-мэйл'
         edit:
           email: 'И-мэйл'
+      start_date: 'Эхлэх огноо'
+      end_date: 'Дуусах огноо'
     hints:
       defaults:
         username: 'Нэвтрэх хэрэглэгчийн нэр'
         password: 'Та тусгай тэмдэгт ашиглахгүй байхыг анхаарна уу.'
     prompts:
       defaults:
-        age: 'Утга сонгох'
+        age: 'Өөрийн насаа сонгоно уу'
     include_blanks:
       defaults:
         age: 'Сонгохгүй'

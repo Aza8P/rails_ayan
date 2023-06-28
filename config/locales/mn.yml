@@ -5,9 +5,27 @@ mn:
   contact: "Холбоо барих"
   login: "Нэвтрэх"
   logout: "Гарах"
+  origin: "Хаанаас"
   destination: "Хаашаа"
   select: "Сонгох"
-  number_of_people: "Аялагчдын тоо"
   start_date: "Явах огноо"
   end_date: "Буцах огноо"
   budget: "Төсөв" 
+  number_of_people: "Аялагчдын тоо"
+  search: "Хайх"
+  date:  
+    order: [ ":year", ":month", ":day"]
+    January: "1-р сар"
+    February: "2-р сар"
+    March: "3-р сар"
+    April: "4-р сар"
+    May: "5-р сар"
+    June: "6-р сар"
+    July: "7-р сар"
+    August: "8-р сар"
+    September: "9-р сар"
+    October: "10-р сар"
+    November: "11-р сар"
+    December: "12-р сар"
+
+  
