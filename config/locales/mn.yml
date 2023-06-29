@@ -6,6 +6,14 @@ mn:
   login: "Нэвтрэх"
   logout: "Гарах"
   origin: "Хаанаас"
+  cities:
+    Guangzhou: "Гуанжоу"
+    Beijing: "Бээжин"
+    Shanghai: "Шанхай"
+    Hangzhou: "Ханжоу"
+    Suzhou: "Сучжоу"
+    Yiwu: "Йиву"
+    Erlian: "Эрлиан"
   destination: "Хаашаа"
   select: "Сонгох"
   start_date: "Явах огноо"
@@ -15,17 +23,20 @@ mn:
   search: "Хайх"
   date:  
     order: [ ":year", ":month", ":day"]
-    January: "1-р сар"
-    February: "2-р сар"
-    March: "3-р сар"
-    April: "4-р сар"
-    May: "5-р сар"
-    June: "6-р сар"
-    July: "7-р сар"
-    August: "8-р сар"
-    September: "9-р сар"
-    October: "10-р сар"
-    November: "11-р сар"
-    December: "12-р сар"
+    month_names: 
+      - ""
+      - "1-р сар"
+      - "2-р сар"
+      - "3-р сар"
+      - "4-р сар"
+      - "5-р сар"
+      - "6-р сар"
+      - "7-р сар"
+      - "8-р сар"
+      - "9-р сар"
+      - "10-р сар"
+      - "11-р сар"
+      - "12-р сар"
 
+    
   

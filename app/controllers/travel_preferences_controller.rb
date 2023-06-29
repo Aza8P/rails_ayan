@@ -41,7 +41,7 @@ class TravelPreferencesController < ApplicationController
     private
 
     def travel_preference_params
-        params.require(:travel_preference).permit(:destination, :start_date, :end_date, :origin, :budget)
+        params.require(:travel_preference).permit(:destination, :start_date, :end_date, :origin, :budget, :one_way)
     end
 
     def set_travel_preference

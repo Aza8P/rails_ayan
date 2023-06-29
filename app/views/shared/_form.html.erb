@@ -1,5 +1,5 @@
-<%= f.input :origin, prompt: t('select'), label: t('origin')%>
-<%= f.input :destination, collection: ['Guangzhou', 'Beijing', 'Shanghai', 'Hangzhou', 'Suzhou', 'Yiwu', 'Erlian'], selected: params[:city], prompt: t('select'), label: t('destination') %>
+<%= f.input :origin, collection: t('cities'), prompt: t('select'), label: t('origin')%>
+<%= f.input :destination, collection: t('cities'), selected: params[:city], prompt: t('select'), label: t('destination') %>
 <%= f.input :start_date, as: :date, order: [:year, :month, :day], start_date: Date.today, end_date: "2023-12-31", label: t('start_date') %>
 <%= f.input :end_date, as: :date, order: [:year, :month, :day], start_date: Date.today, end_date: "2023-12-31",label: t('end_date') %>
 <%= f.submit t('search'), class: "btn btn-primary" %> 

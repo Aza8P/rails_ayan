@@ -13,10 +13,12 @@
         <%= simple_form_for(@travel_preference, url: travel_preferences_path, method: :post) do |f| %>
           <div id="train-form" data-options-target="train">
             <p> this is train form </p>
+            <%= f.input :one_way, as: boolean, label: 'One Way' %>
             <%= render partial: 'shared/form', locals: { f: f } %>
           </div>
           <div id="flight-form" data-options-target="flight" style="display: none;">
             <p> this is flight form </p>
+            <%= f.input :one_way, as: :boolean, label: 'One Way' %>
             <%= render partial: 'shared/form', locals: { f: f } %>
           </div>
           <div id="hotel-form" data-options-target="hotel" style="display: none;">
