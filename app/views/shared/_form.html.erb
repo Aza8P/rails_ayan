@@ -1,5 +1,33 @@
-<%= f.input :origin, collection: t('cities'), prompt: t('select'), label: t('origin')%>
-<%= f.input :destination, collection: t('cities'), selected: params[:city], prompt: t('select'), label: t('destination') %>
-<%= f.input :start_date, as: :date, order: [:year, :month, :day], start_date: Date.today, end_date: "2023-12-31", label: t('start_date') %>
-<%= f.input :end_date, as: :date, order: [:year, :month, :day], start_date: Date.today, end_date: "2023-12-31",label: t('end_date') %>
-<%= f.submit t('search'), class: "btn btn-primary" %> 
+<%= simple_form_for( @travel_preference, url: travel_preferences_path ) do |f| %>  
+  <%= f.hidden_field  :travel_type, value: @travel_preference.travel_type, id: "travel_type_field", data: { options_target: "travelType" }  %>
+
+  <% if @travel_preference.travel_type.in?(%w[train flight]) %>
+    <div class="row">
+      <div class="col">
+      <%= f.input :two_way, as: :boolean %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col">
+    <%= f.input :origin, as: :select, collection: t('cities'), prompt: t('select'), label: t('origin') %>
+    </div>
+    <div class="col">
+    <%= f.input :destination, as: :select, collection: t('cities'), prompt: t('select'), label: t('destination') %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+    <%= f.label t('start_date'), class: "mr-2" %>
+    <%= f.date_field :start_date, class: "form-control datepicker" %>
+    </div>
+    <div class="col">
+    <%= f.label t('end_date'), class: "mr-2" %>
+    <%= f.date_field :end_date, class: "form-control datepicker" %>
+    </div>
+  </div>
+
+  <%= f.submit t('search'), class: "btn btn-primary" %> 
+<% end %>
