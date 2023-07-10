@@ -1,47 +1,36 @@
-require 'net/http'
-require 'json'
-
 class TravelPreferencesController < ApplicationController
-     before_action :set_travel_preference, only: [:show, :edit, :update, :destroy]
+    include Rails.application.routes.url_helpers
+    before_action :set_travel_preference, only: [:show, :edit, :update, :destroy]
 
     def new
         @travel_preference = TravelPreference.new
+        @travel_preference.travel_type = "train" #default value
     end
 
-    def create
-        @travel_preference = TravelPreference.new(travel_preference_params)
-        @travel_preference.user = current_user
+    def create   
+        locale = params[:locale] || :en
+        I18n.locale = locale
+        @travel_preference = current_user.travel_preferences.new(travel_preference_params)
+
+        puts "@travel_preference.origin: #{@travel_preference.origin}"
+        puts "@travel_preference.destination: #{@travel_preference.destination}"
+        puts "travel type: #{@travel_preference.travel_type}"
         
-        if @travel_preference.save
-            # send email to the admin with the request 
-        else
-            render :agenda
+
+        respond_to do |format|
+            if @travel_preference.save
+                format.html { redirect_to root_path, notice: "it was successfully created." }
+            else
+                # format.html { render :new, status: :422 }
+                format.json { render json: @travel_preference.errors, status: :unprocessable_entity }
+            end
         end
 
-        #after obtaining the api key from Trip.com, uncomment the following code & add the api key to the request
-        # if @travel_preference.save
-        #     # make the API request to Trip.com
-        #     response = trip_api_request(@travel_preference)
-        #     if response.code == 200
-        #     # process the API response and extract the relevant data
-        #     @data = process_api_response(response)
-
-        #     # render the agenda page with the fetched data
-        #     render json: { data: @data}
-        #     else
-        #      # Handle API request error
-        #      # Display an error message or perform appropriate error handling
-        #     end
-        # else
-        #     # Handle saving the travel preference error
-        #     # Display an error message or perform appropriate error handling 
-        # end
     end
-
     private
 
     def travel_preference_params
-        params.require(:travel_preference).permit(:destination, :start_date, :end_date, :origin, :budget, :one_way)
+        params.require(:travel_preference).permit(:origin, :destination, :start_date, :end_date, :travel_type, :two_way)
     end
 
     def set_travel_preference

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get 'about', to: 'pages#about', as: 'about'
     get 'contact', to: 'pages#contact', as: 'contact'
-    get 'agenda', to: 'pages#agenda', as: 'agenda'
+    # get 'agenda', to: 'pages#agenda', as: 'agenda'
     resources :travel_preferences, only: %i[create edit update new]
   end
 end

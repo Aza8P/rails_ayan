@@ -6,37 +6,20 @@ mn:
   login: "Нэвтрэх"
   logout: "Гарах"
   origin: "Хаанаас"
-  cities:
-    Guangzhou: "Гуанжоу"
-    Beijing: "Бээжин"
-    Shanghai: "Шанхай"
-    Hangzhou: "Ханжоу"
-    Suzhou: "Сучжоу"
-    Yiwu: "Йиву"
-    Erlian: "Эрлиан"
   destination: "Хаашаа"
+  cities:
+    - Гуанжоу
+    - Бээжин
+    - Шанхай
+    - Ханжоу
+    - Сучжоу
+    - Йиву
+    - Эрлиан
   select: "Сонгох"
+  number_of_people: "Аялагчдын тоо"
   start_date: "Явах огноо"
   end_date: "Буцах огноо"
   budget: "Төсөв" 
-  number_of_people: "Аялагчдын тоо"
   search: "Хайх"
-  date:  
-    order: [ ":year", ":month", ":day"]
-    month_names: 
-      - ""
-      - "1-р сар"
-      - "2-р сар"
-      - "3-р сар"
-      - "4-р сар"
-      - "5-р сар"
-      - "6-р сар"
-      - "7-р сар"
-      - "8-р сар"
-      - "9-р сар"
-      - "10-р сар"
-      - "11-р сар"
-      - "12-р сар"
 
-    
-  
+
