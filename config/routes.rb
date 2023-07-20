@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     get 'contact', to: 'pages#contact', as: 'contact'
     # get 'agenda', to: 'pages#agenda', as: 'agenda'
     resources :travel_preferences, only: %i[create edit update new]
+
+    # Sidekiq Web UI, only for admins.
+    require "sidekiq/web"
+    authenticate :user, ->(user) { user.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
   end
 end
