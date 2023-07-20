@@ -6,6 +6,8 @@ export default class extends Controller {
   connect() {
     this.trainTarget.style.display = "block";
     this.travelTypeTarget.value = "train";
+    // this.btnradioTargets[0].checked = true;
+    console.log("connected", this.travelTypeTarget.value)
   };
 
   toggle(event) {
