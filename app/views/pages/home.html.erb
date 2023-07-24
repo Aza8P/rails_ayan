@@ -5,47 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-7">
+    <div class="container">
+      <div class="row mt-4">
         <% if current_user %>
           <p class="lead">Welcome <%= current_user.email %></p>
         <% end %>
-          <%= t('hello') %>
-
-          <div class="form-box options" data-controller="options">
-            <div class="btn-group" role="group" id="booking-option">
-              <div class="main-tab">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-action="click->options#toggle" data-option="train" checked>
-                <label class="btn btn-outline-primary" for="btnradio1">Train</label>
-              </div> 
-              <div class="main-tab">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-action="click->options#toggle" data-option="flight">
-                <label class="btn btn-outline-primary" for="btnradio2">Flight</label>
-              </div>
-              <div class="main-tab">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" data-action="click->options#toggle" data-option="hotel">
-                <label class="btn btn-outline-primary" for="btnradio3">Hotel</label>
-              </div>
-            </div>       
-              <div id="train-form" data-options-target="train">
-                <p> this is train form </p>
-                <%= render partial: 'shared/form_train', locals: { train: @train } %>
-              </div>
-              <div id="flight-form" data-options-target="flight" style="display: none;">
-                <p> this is flight form </p>
-                <%= render partial: 'shared/form_flight', locals: { flight: @flight }%>
-              </div>
-              <div id="hotel-form" data-options-target="hotel" style="display: none;">
-                <p> this is hotel form </p>
-                <%= render partial: 'shared/form_hotel', locals: { hotel: @hotel } %>
-              </div>
+        <%# FORMS %>
+        <div class="form-box options" data-controller="options">
+          <div class="btn-group" role="group" id="booking-option">
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-action="click->options#toggle" data-option="train" checked>
+              <label class="btn btn-outline-primary" for="btnradio1">Train</label>
+            </div> 
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-action="click->options#toggle" data-option="flight">
+              <label class="btn btn-outline-primary" for="btnradio2">Flight</label>
+            </div>
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" data-action="click->options#toggle" data-option="hotel">
+              <label class="btn btn-outline-primary" for="btnradio3">Hotel</label>
+            </div>
+          </div>       
+            <div id="train-form" data-options-target="train">
+              <p> this is train form </p>
+              <%= render 'shared/form_train', locals: { train: @train } %>
+            </div>
+            <div id="flight-form" data-options-target="flight" style="display: none;">
+              <p> this is flight form </p>
+              <%= render 'shared/form_flight', locals: { flight: @flight }%>
+            </div>
+            <div id="hotel-form" data-options-target="hotel" style="display: none;">
+              <p> this is hotel form </p>
+              <%= render 'shared/form_hotel', locals: { hotel: @hotel } %>
             </div>
           </div>
-
         </div>
       </div>
-      <hr>
+
       <div class="row mt-4">
         <div class="col-md-4">
         <%= link_to new_train_path(city: "Beijing") do %>
@@ -79,7 +75,7 @@
             </div>
           </div>
           <% end %>
-        </div>
+      </div>
     </div>
   </body>
 
