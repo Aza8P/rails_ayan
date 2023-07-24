@@ -2,7 +2,7 @@ class FakeJob < ApplicationJob
   queue_as :default 
 
   def perform(user_id)
-    # Do something later
+    # change to send email to the user after booking is confirmed
     user = User.find(user_id)
     puts "Calling #{user.name}}"
     sleep 3
