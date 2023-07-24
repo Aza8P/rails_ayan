@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en|mn/ do
     devise_for :users
     root to: 'pages#home'
+    resources :trains, only: [:create, :new]
     get 'about', to: 'pages#about', as: 'about'
     get 'contact', to: 'pages#contact', as: 'contact'
     # get 'agenda', to: 'pages#agenda', as: 'agenda'
-    resources :travel_preferences, only: %i[create edit update new]
+   
   end
 end

@@ -1,14 +1,11 @@
-<%= simple_form_for( @travel_preference, url: travel_preferences_path ) do |f| %>  
-  <%= f.hidden_field  :travel_type, value: @travel_preference.travel_type, id: "travel_type_field", data: { options_target: "travelType" }  %>
+<%= simple_form_for( @flight, url: flights_path ) do |f| %>  
 
   <div class="row">
-    <% if @travel_preference.travel_type.in?(%w[train flight]) %>
       <div class="col" data-controller="buttons">
         <button id="option1" data-buttons-target="oneWayRadio" data-action="click->buttons#toggleRadioButtons">One Way</button>     
         <button id="option2" data-buttons-target="twoWayRadio" data-action="click->buttons#toggleRadioButtons"> Two Way</button>
       </div>
       <%= f.input :two_way, as: :hidden %> 
-    <% end %>
   </div>  
   
   <div class="row">

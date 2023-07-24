@@ -1,21 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "train", "flight", "hotel", "travelType"]
+  static targets = [ "train", "flight", "hotel"]
 
   connect() {
     this.trainTarget.style.display = "block";
-    this.travelTypeTarget.value = "train";
-    // this.btnradioTargets[0].checked = true;
-    console.log("connected", this.travelTypeTarget.value)
   };
 
   toggle(event) {
-    const selectedOption = event.target.dataset.option;
+    const selectedOption = event.currentTarget.dataset.option;
     console.log("selected", event.target.dataset.option)
     this.hideAll();
-
-    this.travelTypeTarget.value = selectedOption;
     
     switch (selectedOption) {
       case "train":

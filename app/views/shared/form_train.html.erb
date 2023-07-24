@@ -1,0 +1,32 @@
+<%= simple_form_for( @train, url: trains_path ) do |f| %>  
+
+  <div class="row">
+      <div class="col" data-controller="buttons">
+        <button id="option1" data-buttons-target="oneWayRadio" data-action="click->buttons#toggleRadioButtons">One Way</button>     
+        <button id="option2" data-buttons-target="twoWayRadio" data-action="click->buttons#toggleRadioButtons"> Two Way</button>
+      </div>
+      <%= f.input :two_way, as: :hidden %> 
+  </div>  
+  
+  <div class="row">
+    <div class="col">
+    <%= f.input :origin, as: :select, collection: t('cities'), prompt: t('select'), label: t('origin') %>
+    </div>
+    <div class="col">
+    <%= f.input :destination, as: :select, collection: t('cities'), prompt: t('select'), label: t('destination') %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+    <%= f.label t('start_date'), class: "mr-2" %>
+    <%= f.date_field :start_date, class: "form-control datepicker" %>
+    </div>
+    <div class="col">
+    <%= f.label t('end_date'), class: "mr-2" %>
+    <%= f.date_field :end_date, class: "form-control datepicker" %>
+    </div>
+  </div>
+
+  <%= f.submit t('search'), class: "btn btn-primary" %> 
+<% end %>
