@@ -1,10 +1,12 @@
 class PagesController < ApplicationController
-  def home; end
+  def home 
+    @train= Train.new
+    @flight = Flight.new
+    @hotel = Hotel.new
+  end
 
   def about; end
 
   def contact; end
 
-  def agenda
-  end
 end

@@ -5,24 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-7">
+    <div class="container">
+      <div class="row mt-4">
         <% if current_user %>
           <p class="lead">Welcome <%= current_user.email %></p>
         <% end %>
-          <h1 class="display-4">Zero effort travels to China!</h1>
-          <%= t('hello') %>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis nisi id malesuada convallis. Duis sodales, neque vitae rhoncus semper, quam nisi aliquet massa, a malesuada turpis eros vel purus.  </p>
-        </div>
-        <div class="col-md-5">
-          <img src="https://via.placeholder.com/500x500" class="img-fluid rounded">
+        <%# FORMS %>
+        <div class="form-box options" data-controller="options">
+          <div class="btn-group" role="group" id="booking-option">
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-action="click->options#toggle" data-option="train" checked>
+              <label class="btn btn-outline-primary" for="btnradio1">Train</label>
+            </div> 
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-action="click->options#toggle" data-option="flight">
+              <label class="btn btn-outline-primary" for="btnradio2">Flight</label>
+            </div>
+            <div class="main-tab">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" data-action="click->options#toggle" data-option="hotel">
+              <label class="btn btn-outline-primary" for="btnradio3">Hotel</label>
+            </div>
+          </div>       
+            <div id="train-form" data-options-target="train">
+              <p> this is train form </p>
+              <%= render 'shared/form_train', locals: { train: @train } %>
+            </div>
+            <div id="flight-form" data-options-target="flight" style="display: none;">
+              <p> this is flight form </p>
+              <%= render 'shared/form_flight', locals: { flight: @flight }%>
+            </div>
+            <div id="hotel-form" data-options-target="hotel" style="display: none;">
+              <p> this is hotel form </p>
+              <%= render 'shared/form_hotel', locals: { hotel: @hotel } %>
+            </div>
+          </div>
         </div>
       </div>
-      <hr>
+
       <div class="row mt-4">
         <div class="col-md-4">
-        <%= link_to new_travel_preference_path(city: "Beijing") do %>
+        <%= link_to new_train_path(city: "Beijing") do %>
           <div class="card">
             <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Beijing">
             <div class="card-body">
@@ -33,7 +55,7 @@
           <% end %>
         </div>
         <div class="col-md-4">
-        <%= link_to new_travel_preference_path(city: "Shanghai") do %>
+        <%= link_to new_train_path(city: "Shanghai") do %>
           <div class="card">
             <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Shanghai">
             <div class="card-body">
@@ -44,7 +66,7 @@
           <% end %>
         </div>
         <div class="col-md-4">
-        <%= link_to new_travel_preference_path(city: "Guangzhou") do %>
+        <%= link_to new_train_path(city: "Guangzhou") do %>
           <div class="card">
             <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Guangzhou">
             <div class="card-body">
@@ -53,7 +75,7 @@
             </div>
           </div>
           <% end %>
-        </div>
+      </div>
     </div>
   </body>
 
