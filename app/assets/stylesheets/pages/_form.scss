@@ -1,16 +1,20 @@
-
 .form-box {
-padding: 5px;
+// padding: 5px;
 overflow: hidden;
 border-radius: 2px;
+// background-color: #ffffff;
+background-position: center;
 }
 
-.main-tab {
-  border: none;
+.btn-group {
+  display: flex;
 }
 
-.btn {
-  margin-top: 20px;
+#train-form, #flight-form, #hotel-form{
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: 0 1rem 2rem #0035661a;
+  border-radius: .25rem;
 }
 
 

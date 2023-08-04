@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.trainTarget.style.display = "block";
+    this.trainButton.classList.add("selected")
   };
 
   toggle(event) {
@@ -15,12 +16,15 @@ export default class extends Controller {
     switch (selectedOption) {
       case "train":
         this.trainTarget.style.display = "block";
+        this.trainButton.classList.add("selected");
         break;
       case "flight":
         this.flightTarget.style.display = "block";
+        this.flightButton.classList.add("selected");
         break;
       case "hotel":
         this.hotelTarget.style.display = "block";
+        this.hotelButton.classList.add("selected");
         break;
     }
   }
@@ -28,5 +32,8 @@ export default class extends Controller {
     this.trainTarget.style.display = "none";
     this.flightTarget.style.display = "none";
     this.hotelTarget.style.display = "none";
+    this.trainButton.classList.remove("selected");
+    this.flightButton.classList.remove("selected");
+    this.hotelButton.classList.remove("selected");
   }
 }
