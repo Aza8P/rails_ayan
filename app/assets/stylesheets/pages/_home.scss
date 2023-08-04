@@ -1,2 +1,22 @@
 // Specific CSS for your home-page
+.container { 
+ background-color: #f0f3f5
+}
 
+.main-tab {
+ display: inline-block; 
+ background-color: #f0f3f5;
+ // box-shadow:  0.5rem 1rem #0035661a; 
+}
+
+.main-tab .btn i {
+ margin-right: 5px;
+}
+
+.main-tab .btn {
+ font-size: 16px;
+ vertical-align: middle;
+ padding: 15px 40px;
+ border: none;
+ background-color: #f0f3f5;
+}

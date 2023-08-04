@@ -7,76 +7,37 @@
   <body>
     <div class="container">
       <div class="row mt-4">
-        <% if current_user %>
-          <p class="lead">Welcome <%= current_user.email %></p>
-        <% end %>
         <%# FORMS %>
         <div class="form-box options" data-controller="options">
           <div class="btn-group" role="group" id="booking-option">
             <div class="main-tab">
               <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-action="click->options#toggle" data-option="train" checked>
-              <label class="btn btn-outline-primary" for="btnradio1">Train</label>
+              <label class="btn btn-outline-primary" for="btnradio1" ><i class="fa-solid fa-train-subway"></i>Train</label>
             </div> 
             <div class="main-tab">
               <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-action="click->options#toggle" data-option="flight">
-              <label class="btn btn-outline-primary" for="btnradio2">Flight</label>
+              <label class="btn btn-outline-primary" for="btnradio2" ><i class="fa-solid fa-plane-departure"></i>Flight</label>
             </div>
             <div class="main-tab">
               <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" data-action="click->options#toggle" data-option="hotel">
-              <label class="btn btn-outline-primary" for="btnradio3">Hotel</label>
+              <label class="btn btn-outline-primary" for="btnradio3" ><i class="fa-solid fa-bed"></i>Hotel</label>
             </div>
           </div>       
             <div id="train-form" data-options-target="train">
-              <p> this is train form </p>
+              <%# <p> this is train form </p> %>
               <%= render 'shared/form_train', locals: { train: @train } %>
             </div>
             <div id="flight-form" data-options-target="flight" style="display: none;">
-              <p> this is flight form </p>
+              <%# <p> this is flight form </p> %>
               <%= render 'shared/form_flight', locals: { flight: @flight }%>
             </div>
             <div id="hotel-form" data-options-target="hotel" style="display: none;">
-              <p> this is hotel form </p>
+              <%# <p> this is hotel form </p> %>
               <%= render 'shared/form_hotel', locals: { hotel: @hotel } %>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="row mt-4">
-        <div class="col-md-4">
-        <%= link_to new_train_path(city: "Beijing") do %>
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Beijing">
-            <div class="card-body">
-              <h5 class="card-title">Beijing</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis nisi id malesuada convallis. Duis sodales, neque vitae rhoncus semper, quam nisi aliquet massa, a malesuada turpis eros vel purus.  </p>
-            </div>
-          </div>
-          <% end %>
-        </div>
-        <div class="col-md-4">
-        <%= link_to new_train_path(city: "Shanghai") do %>
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Shanghai">
-            <div class="card-body">
-              <h5 class="card-title">Shanghai</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis nisi id malesuada convallis. Duis sodales, neque vitae rhoncus semper, quam nisi aliquet massa, a malesuada turpis eros vel purus.  </p>
-            </div>
-          </div>
-          <% end %>
-        </div>
-        <div class="col-md-4">
-        <%= link_to new_train_path(city: "Guangzhou") do %>
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Guangzhou">
-            <div class="card-body">
-              <h5 class="card-title">Guangzhou</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis nisi id malesuada convallis. Duis sodales, neque vitae rhoncus semper, quam nisi aliquet massa, a malesuada turpis eros vel purus.  </p>
-            </div>
-          </div>
-          <% end %>
-      </div>
     </div>
   </body>
-
 </html>
