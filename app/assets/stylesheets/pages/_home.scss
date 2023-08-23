@@ -1,12 +1,7 @@
-// Specific CSS for your home-page
-.container { 
- background-color: #f0f3f5
-}
 
 .main-tab {
  display: inline-block; 
  background-color: #f0f3f5;
- // box-shadow:  0.5rem 1rem #0035661a; 
 }
 
 .main-tab .btn i {
@@ -18,5 +13,16 @@
  vertical-align: middle;
  padding: 15px 40px;
  border: none;
- background-color: #f0f3f5;
+ background-color: #ffffff1a;
+ color: dimgray;
+ border-top-left-radius: 0.25rem;
+ border-top-left-radius: 0.25rem;
+ border-bottom-right-radius: 0;
+ border-bottom-left-radius: 0;
+}
+
+/* Style for the checked button */
+.main-tab .btn-check:checked + .btn.btn-outline-primary {
+ background-color: #ffffff;
+ color: #1513A0;
 }

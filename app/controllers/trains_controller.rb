@@ -12,11 +12,6 @@ class TrainsController < ApplicationController
         I18n.locale = locale
         @train = current_user.trains.new(train_params)
 
-        puts "@train.origin: #{@train.origin}"
-        puts "@train.destination: #{@train.destination}"
-        # puts "travel type: #{@train.travel_type}"
-        
-
         respond_to do |format|
             if @train.save
                 format.html { redirect_to root_path, notice: "it was successfully created." }
@@ -30,7 +25,7 @@ class TrainsController < ApplicationController
     private
 
     def train_params
-        params.require(:train).permit(:origin, :destination, :start_date, :end_date, :travel_type, :two_way)
+        params.require(:train).permit(:origin, :destination, :start_date, :end_date)
     end
 
     def set_train

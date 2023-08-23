@@ -1,13 +1,4 @@
 <%= simple_form_for( @train, url: trains_path ) do |f| %>  
-
-  <div class="row">
-      <div class="col" data-controller="buttons">
-        <button type="button" class="btn btn-primary btn-lg" id="option1" data-buttons-target="oneWayRadio" data-action="click->buttons#toggleRadioButtons">One Way</button>     
-        <button type="button" class="btn btn-primary btn-lg" id="option2" data-buttons-target="twoWayRadio" data-action="click->buttons#toggleRadioButtons"> Two Way</button>
-      </div>
-      <%= f.input :two_way, as: :hidden %> 
-  </div>  
-  
   <div class="row">
     <div class="col">
     <%= f.input :origin, as: :select, collection: t('cities'), prompt: t('select'), label: t('origin') %>

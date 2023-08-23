@@ -1,9 +1,8 @@
 .form-box {
-// padding: 5px;
-overflow: hidden;
 border-radius: 2px;
-// background-color: #ffffff;
+border-top-left-radius: 0;
 background-position: center;
+
 }
 
 .btn-group {
@@ -14,7 +13,9 @@ background-position: center;
   background-color: #ffffff;
   padding: 1rem;
   box-shadow: 0 1rem 2rem #0035661a;
-  border-radius: .25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 
