@@ -5,8 +5,8 @@ en:
   contact: "Contact Us"
   login: "Login"
   logout: "Logout"
-  origin: "From Where"
-  destination: "To Where"  
+  origin: "From"
+  destination: "To"  
   cities: 
     - Guangzhou
     - Beijing

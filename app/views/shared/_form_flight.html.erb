@@ -1,51 +1,123 @@
 <%= simple_form_for( @flight, url: flights_path ) do |f| %>  
-
-  <%# <div class="row">
-      <div data-controller="buttons">
-        <button type="button" class="btn btn-primary btn-lg" id="option1" data-buttons-target="oneWayRadio" data-action="click->buttons#toggleRadioButtons">One Way</button>     
-        <button type="button" class="btn btn-primary btn-lg" id="option2" data-buttons-target="twoWayRadio" data-action="click->buttons#toggleRadioButtons"> Two Way</button>
+<div class="row g-2 d-none d-lg-flex">
+  <div class="col-lg-3 order-1">
+    <div class="radio-tab d-flex align-items-center" data-controller="two-way">
+      <div class="form-check" >
+        <input class="form-check-input" type="radio" name="trip_type" id="tripType_ow" value="OW" data-action="click->two-way#toggle">
+        <label class="form-check-label" for="tripType_ow">one way</label>
       </div>
-      <%= f.input :two_way, as: :hidden %> 
-  <%# </div>    %>
-
-  <div class="row radio-tab d-flex align-items-center">
-      <div data-controller="buttons">
-        <button type="button" class="btn btn-primary btn-lg" id="option1" data-buttons-target="oneWayRadio" data-action="click->buttons#toggleRadioButtons">One Way</button>     
-        <button type="button" class="btn btn-primary btn-lg" id="option2" data-buttons-target="twoWayRadio" data-action="click->buttons#toggleRadioButtons"> Two Way</button>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="trip_type" id="tripType_rt" value="RT" checked="" data-action="click->two-way#toggle">
+        <label class="form-check-label" for="tripType_rt">two way</label>
       </div>
-      <%= f.input :two_way, as: :hidden %> 
-  </div>  
-
-  <div class="radio-tab d-flex align-items-center">
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="trip_type" id="tripType_ow" value="OW">
-    <label class="form-check-label" for="tripType_ow">Нэг талдаа</label>
+      <%= f.input :two_way, as: :hidden, input_html: { "data-two-way-target": "type"} %>
+    </div>    
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="trip_type" id="tripType_rt" value="RT" checked="">
-    <label class="form-check-label" for="tripType_rt">Хоёр талдаа</label>
+
+  <div class="col-xl-3 col-lg-4 order-lg-2 order-3">
+    <div class="dropdown passenger-count">
+      <button class="btn dropdown-toggle btn-menu ps-5" type="button" id="dropdownMenuFlightPassengers" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        <div class="text d-flex align-items-center">
+          <i class="fa-solid fa-person-walking-luggage input-icon"></i>
+          <span>1 adult, 0 kid, 0 infant</span>
+        </div>
+      </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuFlightPassengers">
+      <li><p class="title">Passenger</p></li>
+      <li>
+        <div class="text"><strong> Adult</strong><span> 12 or more yo</span></div>
+        <div class="input-group">
+          <button class="btn btn-light" type="button"><i class="fa-solid fa-minus"></i></button>
+          <%# get the data here %>
+          <input type="text" class="form-control text-center" placeholder disabled value="1">
+          <button class="btn btn-light" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </li>
+      <li>
+        <div class="text"><strong> Kid</strong><span>2 to 11 years old</span></div>
+        <div class="input-group">
+          <button class="btn btn-light" type="button"><i class="fa-solid fa-minus"></i></button>
+          <%# get the data here %>
+          <input type="text" class="form-control text-center" placeholder disabled value="1">
+          <button class="btn btn-light" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </li>
+      <li>
+      <div class="text"><strong> Baby</strong><span>less than 2 years old</span></div>
+        <div class="input-group">
+          <button class="btn btn-light" type="button"><i class="fa-solid fa-minus"></i></button>
+          <%# get the data here %>
+          <input type="text" class="form-control text-center" placeholder disabled value="1">
+          <button class="btn btn-light" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </li> 
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-4 order-lg-2 order-3">
+    <div class="dropdown">
+      <button class="btn dropdown-toggle btn-menu ps-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="text"><span>Economy</span></div>
+      </button>
+      <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1" style="">
+        <li><p class="title">Seat class</p></li>
+        <li class="select-class">
+          <div class="radio-tab bg-white d-flex flex-column gap-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="cabin_code" id="cabin_code_0" value="Y" checked="">
+              <label class="form-check-label" for="cabin_code_0">Economy</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="cabin_code" id="cabin_code_1" value="M">
+              <label class="form-check-label" for="cabin_code_1">Business</label>
+            </div>
+            <%# <div class="form-check">
+              <input class="form-check-input" type="radio" name="cabin_code" id="cabin_code_2" value="C">
+              <label class="form-check-label" for="cabin_code_2">Бизнес</label>
+            </div> %>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="cabin_code" id="cabin_code_3" value="J">
+              <label class="form-check-label" for="cabin_code_3">Premium</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="cabin_code" id="cabin_code_4" value="F">
+              <label class="form-check-label" for="cabin_code_4">First class</label>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xl-7 col-lg-6 order-lg-4 order-2">
+    <div class="d-flex align-items-center destination-select">
+      <div class="dropdown w-100 mb-2 mb-lg-0">
+        <%= f.input :origin, as: :select, collection: t('cities'), prompt: '<i class="fa-solid fa-plane-departure"></i>'.html_safe + t('select'), label: false %>
+       </div>
+      <button type="button" class="btn btn-swap" disabled="" aria-label="change">
+        <i class="fa-solid fa-retweet"></i>
+      </button>
+
+      <div class="dropdown w-100 mb-2 mb-lg-0">
+      <%= f.input :destination, as: :select, collection: t('cities'), prompt: t('select'), label: false %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-7 col-lg-6 order-lg-4 order-4">
+    <div class="d-flex align-items-center">
+      <div class="dropdown w-100 mb-2 mb-lg-0">
+        <%# <%= f.label t('start_date'), class: "mr-2" %>
+        <%= f.date_field :start_date, class: "form-control datepicker" %>
+      </div>
+
+      <div class="dropdown w-100 mb-2 mb-lg-0">
+        <%# <%= f.label t('end_date'), class: "mr-2" %> 
+        <%= f.date_field :end_date, class: "form-control datepicker" %>
+      </div>
+      
+      <%= f.submit t('search'), class: "btn btn-primary" %> 
+    </div>
   </div>
 </div>
-  
-  <div class="row">
-    <div class="col">
-    <%= f.input :origin, as: :select, collection: t('cities'), prompt: t('select'), label: t('origin') %>
-    </div>
-    <div class="col">
-    <%= f.input :destination, as: :select, collection: t('cities'), prompt: t('select'), label: t('destination') %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-    <%= f.label t('start_date'), class: "mr-2" %>
-    <%= f.date_field :start_date, class: "form-control datepicker" %>
-    </div>
-    <div class="col">
-    <%= f.label t('end_date'), class: "mr-2" %>
-    <%= f.date_field :end_date, class: "form-control datepicker" %>
-    </div>
-  </div>
-
-  <%= f.submit t('search'), class: "btn btn-primary" %> 
 <% end %>
